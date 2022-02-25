@@ -51,10 +51,8 @@ function validaPeso(peso){
 
 function validaAltura(altura){
     if (altura <= 0 || altura >= 3.00) {
-        console.log("altura recebida " + altura + "invalida" );
         return false;
     }else{
-        console.log("altura recebida " + altura + "ok" );
         return true;
     }
 }
