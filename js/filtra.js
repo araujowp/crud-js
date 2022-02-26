@@ -1,18 +1,20 @@
 var filtro = document.querySelector("#filtrar-tabela");
 
 filtro.addEventListener("input", function () {
-console.log(this.value);
+  var digitado = this.value;
+
   var pacientes = document.querySelectorAll(".paciente");
-  console.log(pacientes);
-  for (var i = 0; i < pacientes.length; i++) {
-    var tdNome = pacientes[i].querySelector(".info-nome");
+
+  pacientes.forEach(function (paciente) {
+    var tdNome = paciente.querySelector(".info-nome");
     var nome = tdNome.textContent;
-    if (nome != this.value) {
-      pacientes[i].classList.add("invisivel");
-      console.log("invisivel");
+    var expressao = new RegExp(digitado, "i");//i: == case insensitive:
+
+
+    if (!expressao.test(nome) && digitado !== "") {
+      paciente.classList.add("invisivel");
     } else {
-      pacientes[i].classList.remove("invisivel");
-      console.log("visivel");
+      paciente.classList.remove("invisivel");
     }
-  }
+  });
 });
